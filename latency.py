@@ -18,7 +18,7 @@ click_ang_fr = 0.5 #angular frequency of test click in radians per sample. Proba
 
 pa = pyaudio.PyAudio()
 
-silence = np.zeros(CHUNK, dtype = int16)
+silence = np.zeros(CHUNK, dtype = np.int16)
 
 cos_arr = np.empty(CHUNK, dtype = float)                         #to store values of cos(i omega) at all relevant i
 for i in range(CHUNK):
