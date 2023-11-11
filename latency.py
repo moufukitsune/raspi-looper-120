@@ -29,9 +29,9 @@ for i in range(CHUNK):
     sin_arr[i] = np.sin(click_ang_fr * i)
 
 click = np.empty(CHUNK, dtype = int16)
-click = np.cast[int16](sin_arr * 32767)                         #creating sine wave in click buffer
+click = np.cast[np.int16](sin_arr * 32767)                         #creating sine wave in click buffer
 
-testclip = np.zeros([CLIPLENGTH, CHUNK], dtype = int16)          #stores data recorded during test
+testclip = np.zeros([CLIPLENGTH, CHUNK], dtype = np.int16)          #stores data recorded during test
 
 clicknesses = np.zeros([CLIPLENGTH], dtype = np.single)             #for storing RMS of click frequency component for each buffer in testclip
 
