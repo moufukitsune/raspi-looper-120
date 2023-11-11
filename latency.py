@@ -28,7 +28,7 @@ sin_arr = np.empty(CHUNK, dtype = float)                         #to store value
 for i in range(CHUNK):
     sin_arr[i] = np.sin(click_ang_fr * i)
 
-click = np.empty(CHUNK, dtype = int16)
+click = np.empty(CHUNK, dtype = np.int16)
 click = np.cast[np.int16](sin_arr * 32767)                         #creating sine wave in click buffer
 
 testclip = np.zeros([CLIPLENGTH, CHUNK], dtype = np.int16)          #stores data recorded during test
