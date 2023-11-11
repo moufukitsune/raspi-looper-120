@@ -18,20 +18,20 @@ click_ang_fr = 0.5 #angular frequency of test click in radians per sample. Proba
 
 pa = pyaudio.PyAudio()
 
-silence = np.zeros(CHUNK, dtype = np.int16)
+silence = np.zeros(CHUNK, dtype = int16)
 
-cos_arr = np.empty(CHUNK, dtype = np.float)                         #to store values of cos(i omega) at all relevant i
+cos_arr = np.empty(CHUNK, dtype = float)                         #to store values of cos(i omega) at all relevant i
 for i in range(CHUNK):
     cos_arr[i] = np.cos(click_ang_fr * i)
 
-sin_arr = np.empty(CHUNK, dtype = np.float)                         #to store values of sin
+sin_arr = np.empty(CHUNK, dtype = float)                         #to store values of sin
 for i in range(CHUNK):
     sin_arr[i] = np.sin(click_ang_fr * i)
 
-click = np.empty(CHUNK, dtype = np.int16)
-click = np.cast[np.int16](sin_arr * 32767)                         #creating sine wave in click buffer
+click = np.empty(CHUNK, dtype = int16)
+click = np.cast[int16](sin_arr * 32767)                         #creating sine wave in click buffer
 
-testclip = np.zeros([CLIPLENGTH, CHUNK], dtype = np.int16)          #stores data recorded during test
+testclip = np.zeros([CLIPLENGTH, CHUNK], dtype = int16)          #stores data recorded during test
 
 clicknesses = np.zeros([CLIPLENGTH], dtype = np.single)             #for storing RMS of click frequency component for each buffer in testclip
 
@@ -63,7 +63,7 @@ def test_callback(in_data, frame_count, time_info, status):
     if (current_buffer == CLIPLENGTH):
         return(silence, pyaudio.paComplete)
 
-    testclip[current_buffer, :] = np.frombuffer(in_data, dtype = np.int16)    
+    testclip[current_buffer, :] = np.frombuffer(in_data, dtype = int16)    
     
     if (current_buffer == 0):
         return(click, pyaudio.paContinue)
