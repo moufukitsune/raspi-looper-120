@@ -63,7 +63,7 @@ def test_callback(in_data, frame_count, time_info, status):
     if (current_buffer == CLIPLENGTH):
         return(silence, pyaudio.paComplete)
 
-    testclip[current_buffer, :] = np.frombuffer(in_data, dtype = int16)    
+    testclip[current_buffer, :] = np.frombuffer(in_data, dtype = np.int16)    
     
     if (current_buffer == 0):
         return(click, pyaudio.paContinue)
